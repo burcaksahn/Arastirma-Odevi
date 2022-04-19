@@ -13,3 +13,20 @@ class Dikdortgen(val yukseklik: Int, val uzunluk: Int)
 }
 
 ```
+
+## Lateinit nedir?
+Bir değişken oluşturmanız gereken ancak değişkenin bildirilmesi/oluşturulması sırasında değerini belirmek istemediğiniz durumlarda null hatası almamak için lateinit kullanılmaktadır. Bu sayede değişkenin değeri kullanım sırasında atanabilir. 
+## Lateinit Neden Kullanılır?
+Lateinit sadece var olan değişkenlerde kullanılır.Lateinit tanımlanan değişkenler Non-Null bir değişkendir. Hem Non-Null olarak tanımlanır hem de değer ataması yapılmaz. Bu değişkeni herhangi bir yerde, tanımlama yapmadan kullanmaya çalışırsak Kotlin  “UninitializedPropertyAccessException” hatası verecektir. Lateinit sayesinde Kotlin bu değişkeni Non-Null olarak görmektedir.  Bu şekilde Nullsafe yapılmış olunur ve hata oranını azaltır.
+Aşağıdaki örnekte olduğu gibi variable lateinit olarak tanımlanmış, değeri atanmamıştır. Daha sonra değeri verilmesine rağmen, lateinit olarak tanımlandığı için null hatası alınmamıştır.Aksi takdirde kodumuzda null hatası alınacaktı. 
+
+```bash
+lateinit var person1:Person
+fun main(args: Array<String>) {
+    person1 = Person("Ted",28)
+    print(person1.name + " is " + person1.age.toString())
+}
+
+
+  
+```
